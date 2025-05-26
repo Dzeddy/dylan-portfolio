@@ -1,0 +1,11 @@
+export { Navigation } from './Navigation';
+export { HeroSection } from './HeroSection';
+export { SocialLinks } from './SocialLinks';
+export { ExperienceSection } from './ExperienceSection';
+export { ExperienceCard } from './ExperienceCard';
+export { Timeline } from './Timeline';
+export { ProjectsSection } from './ProjectsSection';
+export { ProjectCard } from './ProjectCard';
+export { SkillsSection } from './SkillsSection';
+export { ContactSection } from './ContactSection';
+export { Footer } from './Footer'; 
