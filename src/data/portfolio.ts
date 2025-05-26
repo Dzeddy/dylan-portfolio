@@ -17,7 +17,7 @@ export const socialLinks: SocialLink[] = [
     label: 'GitHub'
   },
   {
-    href: '#',
+    href: 'https://www.linkedin.com/in/dylan-zhuang/',
     icon: Linkedin,
     label: 'LinkedIn'
   },
