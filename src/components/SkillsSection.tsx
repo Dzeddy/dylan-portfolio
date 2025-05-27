@@ -50,7 +50,13 @@ const skillCategories: SkillCategory[] = [
 
 const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ category, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
+  const [clickedSkill, setClickedSkill] = useState<number | null>(null);
   const Icon = category.icon;
+
+  const handleSkillClick = (skillIndex: number) => {
+    setClickedSkill(clickedSkill === skillIndex ? null : skillIndex);
+  };
 
   return (
     <div
@@ -79,27 +85,38 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {category.items.map((skill, skillIndex) => (
-            <div
-              key={skillIndex}
-              className={`relative px-2 sm:px-3 py-1 rounded-full bg-gray-800 border border-yellow-600/30 
-                text-yellow-500 text-xs sm:text-sm font-medium overflow-hidden
-                transform transition-all duration-300 hover:scale-105 hover:border-yellow-500
-                hover:shadow-lg hover:shadow-yellow-500/20 text-center`}
-              style={{ animationDelay: `${(index * 0.1) + (skillIndex * 0.05)}s` }}
-            >
-              {/* Hover effect */}
-              <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} 
-                opacity-0 hover:opacity-10 transition-opacity duration-300`} />
-              
-              <span className="relative flex items-center justify-center gap-1 sm:gap-2">
-                {isHovered && skillIndex === 0 && (
-                  <Sparkles size={10} className="animate-pulse sm:w-3 sm:h-3" />
-                )}
-                {skill}
-              </span>
-            </div>
-          ))}
+          {category.items.map((skill, skillIndex) => {
+            const isSkillHovered = hoveredSkill === skillIndex;
+            const isSkillClicked = clickedSkill === skillIndex;
+            const showSparkles = isSkillHovered || isSkillClicked;
+            
+            return (
+              <div
+                key={skillIndex}
+                className={`relative px-2 sm:px-3 py-1 rounded-full bg-gray-800 border border-yellow-600/30 
+                  text-yellow-500 text-xs sm:text-sm font-medium overflow-hidden cursor-pointer
+                  transform transition-all duration-300 hover:scale-105 hover:border-yellow-500
+                  hover:shadow-lg hover:shadow-yellow-500/20 text-center
+                  ${isSkillClicked ? 'scale-105 border-yellow-500 shadow-lg shadow-yellow-500/20' : ''}`}
+                style={{ animationDelay: `${(index * 0.1) + (skillIndex * 0.05)}s` }}
+                onMouseEnter={() => setHoveredSkill(skillIndex)}
+                onMouseLeave={() => setHoveredSkill(null)}
+                onClick={() => handleSkillClick(skillIndex)}
+              >
+                {/* Hover effect */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} 
+                  opacity-0 hover:opacity-10 transition-opacity duration-300
+                  ${isSkillClicked ? 'opacity-10' : ''}`} />
+                
+                <span className="relative flex items-center justify-center gap-1 sm:gap-2">
+                  {showSparkles && (
+                    <Sparkles size={10} className="animate-pulse sm:w-3 sm:h-3 text-yellow-400" />
+                  )}
+                  {skill}
+                </span>
+              </div>
+            );
+          })}
         </div>
 
         {/* Proficiency indicator */}
