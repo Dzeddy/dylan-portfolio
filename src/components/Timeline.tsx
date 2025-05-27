@@ -15,21 +15,33 @@ const typeStyles = {
     iconBg: 'bg-blue-500/20',
     iconColor: 'text-blue-400',
     dotColor: 'bg-gradient-to-br from-blue-500 to-purple-500',
-    cardBorder: 'border-blue-500/30'
+    cardBorder: 'border-blue-500/30',
+    hoverBorder: 'border-blue-400/70',
+    hoverShadow: 'shadow-blue-400/20',
+    titleColor: 'text-blue-300',
+    sparkleColor: 'text-blue-400'
   },
   education: {
     gradient: 'from-green-600 to-emerald-600',
     iconBg: 'bg-green-500/20',
     iconColor: 'text-green-400',
     dotColor: 'bg-gradient-to-br from-green-500 to-emerald-500',
-    cardBorder: 'border-green-500/30'
+    cardBorder: 'border-green-500/30',
+    hoverBorder: 'border-green-400/70',
+    hoverShadow: 'shadow-green-400/20',
+    titleColor: 'text-green-300',
+    sparkleColor: 'text-green-400'
   },
   research: {
     gradient: 'from-orange-600 to-red-600',
     iconBg: 'bg-orange-500/20',
     iconColor: 'text-orange-400',
     dotColor: 'bg-gradient-to-br from-orange-500 to-red-500',
-    cardBorder: 'border-orange-500/30'
+    cardBorder: 'border-orange-500/30',
+    hoverBorder: 'border-orange-400/70',
+    hoverShadow: 'shadow-orange-400/20',
+    titleColor: 'text-orange-300',
+    sparkleColor: 'text-orange-400'
   }
 };
 
@@ -47,10 +59,9 @@ const TimelineCard: React.FC<{ item: EnhancedTimelineItem; index: number }> = ({
       {/* Mobile: All cards on one side */}
       <div className="w-full md:w-5/12 pl-12 md:pl-0 md:pr-8">
         <div 
-          className={`bg-gray-900/80 backdrop-blur-sm border-2 ${style.cardBorder} rounded-xl p-4 sm:p-6 
-            transform transition-all duration-300 hover:scale-105 hover:-translate-y-1
-            hover:shadow-2xl hover:shadow-yellow-500/10 ${
-            isHovered ? 'border-yellow-500/50' : ''
+          className={`bg-gray-900/80 backdrop-blur-sm border-2 ${isHovered ? style.hoverBorder : style.cardBorder} rounded-xl p-4 sm:p-6 
+            transform transition-all duration-300 ${isHovered ? 'scale-105 -translate-y-1 shadow-2xl' : ''} ${
+            isHovered ? style.hoverShadow : ''
           }`}
         >
           {/* Header with Icon */}
@@ -60,7 +71,7 @@ const TimelineCard: React.FC<{ item: EnhancedTimelineItem; index: number }> = ({
               <Icon size={20} className="sm:w-6 sm:h-6" />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg sm:text-xl font-bold text-yellow-500 mb-1">{item.title}</h3>
+              <h3 className={`text-lg sm:text-xl font-bold mb-1 ${isHovered ? style.titleColor : 'text-yellow-500'} transition-colors duration-300`}>{item.title}</h3>
               <p className="text-gray-400 text-xs sm:text-sm">{item.company}</p>
             </div>
           </div>
@@ -82,8 +93,7 @@ const TimelineCard: React.FC<{ item: EnhancedTimelineItem; index: number }> = ({
                 <span 
                   key={i} 
                   className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-full ${style.iconBg} ${style.iconColor} 
-                    border border-current transform transition-all duration-300 
-                    hover:scale-110 hover:shadow-lg`}
+                    border border-current transform transition-all duration-300`}
                 >
                   {tech}
                 </span>
@@ -96,7 +106,7 @@ const TimelineCard: React.FC<{ item: EnhancedTimelineItem; index: number }> = ({
             <div className="space-y-1.5 sm:space-y-2 mt-3 sm:mt-4">
               {item.achievements.map((achievement, i) => (
                 <div key={i} className="flex items-center gap-2 text-xs sm:text-sm text-gray-400">
-                  <Sparkles size={12} className="text-yellow-500 sm:w-3.5 sm:h-3.5" />
+                  <Sparkles size={12} className={`sm:w-3.5 sm:h-3.5 transition-colors duration-300 ${isHovered ? style.sparkleColor : 'text-yellow-500'}`} />
                   {achievement}
                 </div>
               ))}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Code2, 
   Cloud, 
@@ -52,14 +52,30 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
   const [clickedSkill, setClickedSkill] = useState<number | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const Icon = category.icon;
 
   const handleSkillClick = (skillIndex: number) => {
     setClickedSkill(clickedSkill === skillIndex ? null : skillIndex);
   };
 
+  // Clear selection when clicking outside the card
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
+        setClickedSkill(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div
+      ref={cardRef}
       className="relative group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -88,16 +104,21 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
           {category.items.map((skill, skillIndex) => {
             const isSkillHovered = hoveredSkill === skillIndex;
             const isSkillClicked = clickedSkill === skillIndex;
-            const showSparkles = isSkillHovered || isSkillClicked;
+            const showSparkles = isSkillClicked || (clickedSkill === null && isSkillHovered);
             
             return (
               <div
                 key={skillIndex}
-                className={`relative px-2 sm:px-3 py-1 rounded-full bg-gray-800 border border-yellow-600/30 
-                  text-yellow-500 text-xs sm:text-sm font-medium overflow-hidden cursor-pointer
-                  transform transition-all duration-300 hover:scale-105 hover:border-yellow-500
-                  hover:shadow-lg hover:shadow-yellow-500/20 text-center
-                  ${isSkillClicked ? 'scale-105 border-yellow-500 shadow-lg shadow-yellow-500/20' : ''}`}
+                className={`relative px-2 sm:px-3 py-1 rounded-full bg-gray-800 border text-yellow-500 text-xs sm:text-sm font-medium overflow-hidden cursor-pointer
+                  transform transition-all duration-300 text-center
+                  ${isSkillClicked 
+                    ? 'scale-105 border-yellow-500 shadow-lg shadow-yellow-500/20' 
+                    : clickedSkill === null && isSkillHovered
+                      ? 'scale-105 border-yellow-500 shadow-lg shadow-yellow-500/20'
+                      : clickedSkill === null
+                        ? 'border-yellow-600/30 hover:scale-105 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/20'
+                        : 'border-yellow-600/30 hover:scale-105'
+                  }`}
                 style={{ animationDelay: `${(index * 0.1) + (skillIndex * 0.05)}s` }}
                 onMouseEnter={() => setHoveredSkill(skillIndex)}
                 onMouseLeave={() => setHoveredSkill(null)}
@@ -105,13 +126,25 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
               >
                 {/* Hover effect */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} 
-                  opacity-0 hover:opacity-10 transition-opacity duration-300
-                  ${isSkillClicked ? 'opacity-10' : ''}`} />
+                  transition-opacity duration-300
+                  ${isSkillClicked 
+                    ? 'opacity-10' 
+                    : clickedSkill === null && isSkillHovered
+                      ? 'opacity-10'
+                      : clickedSkill === null
+                        ? 'opacity-0 hover:opacity-10'
+                        : 'opacity-0'
+                  }`} />
                 
                 <span className="relative flex items-center justify-center gap-1 sm:gap-2">
-                  {showSparkles && (
-                    <Sparkles size={10} className="animate-pulse sm:w-3 sm:h-3 text-yellow-400" />
-                  )}
+                  <Sparkles 
+                    size={10} 
+                    className={`sm:w-3 sm:h-3 text-yellow-400 transition-all duration-300 ${
+                      showSparkles 
+                        ? 'animate-pulse opacity-100 scale-100' 
+                        : 'opacity-0 scale-75'
+                    }`} 
+                  />
                   {skill}
                 </span>
               </div>
@@ -145,7 +178,7 @@ export const SkillsSection: React.FC = () => {
               Technical Skills
             </span>
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base md:text-lg px-4">Technologies I work with to build amazing solutions</p>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg px-4">Technologies I've worked with in the past</p>
         </div>
 
         {/* Skills Grid */}
