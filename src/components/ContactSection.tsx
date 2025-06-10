@@ -5,7 +5,11 @@ export const ContactSection: React.FC = () => {
   return (
     <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-black">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-yellow-500">Get In Touch</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">
+          <span className="bg-gradient-to-r from-yellow-400 via-orange-500 via-red-500 via-pink-500 via-purple-500 via-blue-500 via-cyan-500 via-green-500 to-yellow-400 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">
+            Get In Touch
+          </span>
+        </h2>
         <p className="text-gray-300 mb-6 sm:mb-8 text-base sm:text-lg px-4">
           I'm always open to discussing new opportunities, collaborations, or just having a chat about technology and innovation.
         </p>

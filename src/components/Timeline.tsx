@@ -59,9 +59,10 @@ const TimelineCard: React.FC<{ item: EnhancedTimelineItem; index: number }> = ({
       {/* Mobile: All cards on one side */}
       <div className="w-full md:w-5/12 pl-12 md:pl-0 md:pr-8">
         <div 
-          className={`bg-gray-900/80 backdrop-blur-sm border-2 ${isHovered ? style.hoverBorder : style.cardBorder} rounded-xl p-4 sm:p-6 
-            transform transition-all duration-300 ${isHovered ? 'scale-105 -translate-y-1 shadow-2xl' : ''} ${
-            isHovered ? style.hoverShadow : ''
+          className={`bg-gray-900/80 backdrop-blur-sm border-2 ${style.cardBorder} rounded-xl p-4 sm:p-6 
+            transform transition-all duration-300 hover:scale-105 hover:-translate-y-1
+            hover:shadow-2xl hover:${style.hoverShadow} ${
+            isHovered ? style.hoverBorder : ''
           }`}
         >
           {/* Header with Icon */}
@@ -93,7 +94,8 @@ const TimelineCard: React.FC<{ item: EnhancedTimelineItem; index: number }> = ({
                 <span 
                   key={i} 
                   className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-full ${style.iconBg} ${style.iconColor} 
-                    border border-current transform transition-all duration-300`}
+                    border border-current transform transition-all duration-300 
+                    hover:scale-110 hover:shadow-lg`}
                 >
                   {tech}
                 </span>
@@ -134,8 +136,8 @@ const TimelineCard: React.FC<{ item: EnhancedTimelineItem; index: number }> = ({
 export const Timeline: React.FC<TimelineProps> = ({ items }) => {
   return (
     <div className="mt-8 sm:mt-16">
-      <h3 className="text-2xl sm:text-3xl font-bold text-center mb-2">
-        <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2">
+        <span className="bg-gradient-to-r from-yellow-400 via-orange-500 via-red-500 via-pink-500 via-purple-500 via-blue-500 via-cyan-500 via-green-500 to-yellow-400 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">
           My Journey
         </span>
       </h3>

@@ -17,7 +17,11 @@ export const ExperienceSection: React.FC = () => {
   return (
     <section id="experience" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-black">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-yellow-500">Experience</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16">
+          <span className="bg-gradient-to-r from-yellow-400 via-orange-500 via-red-500 via-pink-500 via-purple-500 via-blue-500 via-cyan-500 via-green-500 to-yellow-400 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">
+            Experience
+          </span>
+        </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Mobile: Use strict ordering (Capital One, Raymond James, UF, FAU) */}

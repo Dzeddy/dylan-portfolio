@@ -80,6 +80,12 @@ export const experiences: ExperienceItem[] = [
 
 export const projects: ProjectItem[] = [
   {
+    title: 'Zettelkasten – Connected Knowledge Platform',
+    description: 'Full-stack knowledge management platform that transforms notes into an interlinked knowledge graph.',
+    tech: ['Go', 'React', 'TypeScript', 'MongoDB', 'Redis', 'Pinecone', 'OpenAI API', 'WebSockets'],
+    link: 'https://github.com/Dzeddy/zettelkasten'
+  },
+  {
     title: 'Stats Dashboard - SwampHacks Project',
     description: 'High-performance gaming statistics dashboard with microservice architecture, serving 200+ monthly users with 2ms average latency.',
     tech: ['Go', 'MongoDB', 'Redis', 'React', 'NGINX'],

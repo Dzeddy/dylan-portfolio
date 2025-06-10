@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Clock } from 'lucide-react';
 import { ProjectItem } from '../types';
 
 interface ProjectCardProps {
@@ -21,6 +21,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <a href={project.link} className="flex items-center text-yellow-500 hover:text-yellow-400 transition-colors text-sm sm:text-base">
         View Project <ExternalLink size={14} className="ml-2 sm:w-4 sm:h-4" />
       </a>
+    </div>
+  );
+};
+
+export const ComingSoonCard: React.FC = () => {
+  return (
+    <div className="bg-gray-900 border-2 border-gray-600 rounded-lg p-4 sm:p-6 flex flex-col h-full items-center justify-center opacity-60">
+      <Clock size={48} className="text-gray-400 mb-4" />
+      <h3 className="text-lg sm:text-xl font-bold text-gray-400 mb-3">Coming Soon</h3>
+      <p className="text-gray-500 text-sm sm:text-base text-center mb-4 flex-grow">
+        More exciting projects are on the way. Stay tuned!
+      </p>
+      <div className="flex items-center text-gray-500 text-sm sm:text-base">
+        <Clock size={14} className="mr-2 sm:w-4 sm:h-4" />
+        In Development
+      </div>
     </div>
   );
 }; 
