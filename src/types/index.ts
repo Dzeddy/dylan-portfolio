@@ -11,6 +11,7 @@ export interface ProjectItem {
   description: string;
   tech: string[];
   link: string;
+  hideOnMobile?: boolean;
 }
 
 export interface TimelineItem {

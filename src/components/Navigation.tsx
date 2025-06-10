@@ -18,7 +18,7 @@ export const Navigation: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed w-full z-50 transition-all duration-300 hidden sm:block ${
       scrolled ? 'bg-black/90 backdrop-blur-md border-b border-yellow-600/20' : ''
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">

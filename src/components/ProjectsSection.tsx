@@ -22,7 +22,9 @@ export const ProjectsSection: React.FC = () => {
             <ProjectCard key={index} project={project} />
           ))}
           {Array.from({ length: comingSoonCount }, (_, index) => (
-            <ComingSoonCard key={`coming-soon-${index}`} />
+            <div key={`coming-soon-${index}`} className="hidden sm:block">
+              <ComingSoonCard />
+            </div>
           ))}
         </div>
       </div>

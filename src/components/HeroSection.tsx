@@ -5,7 +5,7 @@ import { personalInfo, socialLinks } from '../data/portfolio';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6">
+    <section className="min-h-screen flex items-start sm:items-center justify-center relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-0">
       {/* Animated background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 -left-4 w-48 sm:w-72 h-48 sm:h-72 bg-yellow-500 rounded-full filter blur-3xl animate-pulse"></div>

@@ -30,13 +30,24 @@ export const socialLinks: SocialLink[] = [
 
 export const experiences: ExperienceItem[] = [
   {
+    company: 'Your Company?',
+    position: 'Software Engineer',
+    duration: 'Coming Soon',
+    description: [
+      'Ready to tackle your next big challenge with innovative solutions',
+      'Bringing expertise in distributed systems, Go, and full-stack development',
+      'Could this be the perfect match? Let\'s find out! 🚀'
+    ],
+    logo: '?'
+  },
+  {
     company: 'Capital One',
-    position: 'Incoming Software Engineering Intern - Bank Tech (Microservices, Go)',
+    position: 'Software Engineering Intern',
     duration: 'May 2025 - August 2025',
     description: [
-      'Upcoming internship focusing on microservices architecture',
-      'Working with Go programming language and distributed systems',
-      'Contributing to bank technology infrastructure'
+      'Implemented a GraphQL layer using gqlgen (Go) to handle 1000+ TPS in production with sub-10ms latency overhead',
+      'Migrated REST-based APIs with backward compatibility to ensure a zero-downtime transition',
+      'Developed serverless GraphQL resolvers in Go on AWS Lambda'
     ],
     logo: 'C1'
   },
@@ -45,13 +56,22 @@ export const experiences: ExperienceItem[] = [
     position: 'Software Engineering Intern',
     duration: 'May 2024 - August 2024',
     description: [
-      'Implemented event-driven architecture using Apache Kafka for real-time data synchronization',
-      'Developed and maintained microservices using Java Spring Boot that handled over 1M daily requests',
-      'Created automated testing suites using JUnit, achieving 90% code coverage for core functionality',
-      'Developed a distributed caching system using Java and Redis, improving query response times by 40%',
-      'Optimized database queries reducing response time by 40% through indexing and query optimization'
+      'Developed microservices using Java Spring Boot serving 50M+ daily requests with 99.9% uptime',
+      'Implemented Redis caching strategy reducing database load by 40% and API response times by 200ms',
+      'Reduced database query response time by 40% through indexing and query optimization'
     ],
     logo: 'RJ'
+  },
+  {
+    company: 'DeepMotion',
+    position: 'Software Engineering Intern',
+    duration: 'May 2023 - August 2023',
+    description: [
+      'Implemented OAuth 2.0 authentication and input validation protocols',
+      'Developed comprehensive monitoring and alerting system using Prometheus and Grafana',
+      'Collaborated with international teams across 3 time zones using Agile methodologies and code reviews'
+    ],
+    logo: 'DM'
   },
   {
     company: 'Florida Atlantic University',
@@ -82,7 +102,7 @@ export const projects: ProjectItem[] = [
   {
     title: 'Zettelkasten – Connected Knowledge Platform',
     description: 'Full-stack knowledge management platform that transforms notes into an interlinked knowledge graph.',
-    tech: ['Go', 'React', 'TypeScript', 'MongoDB', 'Redis', 'Pinecone', 'OpenAI API', 'WebSockets'],
+    tech: ['Go', 'React', 'TypeScript', 'MongoDB', 'Redis', 'Pinecone', 'OpenAI Embeddings', 'WebSockets'],
     link: 'https://github.com/Dzeddy/zettelkasten'
   },
   {
@@ -108,9 +128,10 @@ export const projects: ProjectItem[] = [
 export const timeline: TimelineItem[] = [
   { date: '2025', title: 'Capital One Bank Tech Internship', side: 'left' },
   { date: '2024', title: 'Raymond James SWE Internship', side: 'right' },
-  { date: '2023', title: 'Started as TA at UF', side: 'left' },
-  { date: '2022', title: 'Began CS + Math at UF', side: 'right' },
-  { date: '2020-2022', title: 'Research at FAU', side: 'left' }
+  { date: '2023', title: 'DeepMotion SWE Internship', side: 'left' },
+  { date: '2023', title: 'Started as TA at UF', side: 'right' },
+  { date: '2022', title: 'Began CS + Math at UF', side: 'left' },
+  { date: '2020-2022', title: 'Research at FAU', side: 'right' }
 ];
 
 export const enhancedTimeline: EnhancedTimelineItem[] = [
@@ -121,8 +142,9 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     company: 'Capital One',
     type: 'work',
     icon: Briefcase,
-    description: 'Microservices architecture with Go programming language',
-    technologies: ['Go', 'Microservices', 'Distributed Systems'],
+    description: 'Implemented GraphQL layer and serverless resolvers using Go',
+    technologies: ['Go', 'GraphQL', 'AWS Lambda', 'gqlgen'],
+    achievements: ['1000+ TPS handled', 'Sub-10ms latency overhead', 'Zero-downtime migration'],
     side: 'left'
   },
   {
@@ -132,13 +154,25 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     company: 'Raymond James Financial',
     type: 'work',
     icon: Code,
-    description: 'Developed event-driven architecture and distributed caching systems',
-    technologies: ['Java', 'Spring Boot', 'Kafka', 'Redis'],
-    achievements: ['40% query optimization', '1M+ daily requests'],
+    description: 'Developed high-performance microservices and caching systems',
+    technologies: ['Java', 'Spring Boot', 'Redis'],
+    achievements: ['50M+ daily requests', '99.9% uptime', '40% query optimization', '200ms response time reduction'],
     side: 'right'
   },
   {
     id: 3,
+    date: '2023',
+    title: 'DeepMotion SWE Internship',
+    company: 'DeepMotion',
+    type: 'work',
+    icon: Code,
+    description: 'Implemented authentication systems and monitoring infrastructure',
+    technologies: ['OAuth 2.0', 'Prometheus', 'Grafana'],
+    achievements: ['International team collaboration', 'Agile methodologies'],
+    side: 'left'
+  },
+  {
+    id: 4,
     date: '2023',
     title: 'Started as TA at UF',
     company: 'University of Florida',
@@ -146,10 +180,10 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     icon: BookOpen,
     description: 'Teaching Assistant for Software Engineering course',
     achievements: ['15% exam score improvement', '150+ students mentored'],
-    side: 'left'
+    side: 'right'
   },
   {
-    id: 4,
+    id: 5,
     date: '2022',
     title: 'Began CS + Math at UF',
     company: 'University of Florida',
@@ -157,10 +191,10 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     icon: GraduationCap,
     description: 'Benacquisto Scholar pursuing dual degree',
     achievements: ['3.93 GPA', 'Dean\'s List'],
-    side: 'right'
+    side: 'left'
   },
   {
-    id: 5,
+    id: 6,
     date: '2020-2022',
     title: 'Research at FAU',
     company: 'Florida Atlantic University',
@@ -169,7 +203,7 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     description: 'Published research on ML for drug discovery and sleep disorder classification',
     technologies: ['Python', 'TensorFlow', 'Data Analysis'],
     achievements: ['2 published papers', '10GB+ datasets analyzed'],
-    side: 'left'
+    side: 'right'
   }
 ];
 
