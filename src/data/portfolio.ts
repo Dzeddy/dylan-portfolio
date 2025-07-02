@@ -3,7 +3,7 @@ import { ExperienceItem, ProjectItem, TimelineItem, SocialLink, EnhancedTimeline
 
 export const personalInfo = {
   name: 'Dylan Zhuang',
-  title: 'Incoming SWE Intern @ Capital One (Bank Tech - Microservices, Go)',
+  title: 'Incoming SWE Intern @ Capital One',
   education: 'CS + Math @ University of Florida - Benacquisto Scholar',
   role: 'TA @ UF CISE',
   email: 'dylanzhuang1025@gmail.com',
@@ -34,9 +34,7 @@ export const experiences: ExperienceItem[] = [
     position: 'Software Engineer',
     duration: 'Coming Soon',
     description: [
-      'Ready to tackle your next big challenge with innovative solutions',
-      'Bringing expertise in distributed systems, Go, and full-stack development',
-      'Could this be the perfect match? Let\'s find out! 🚀'
+      'Ready to tackle your next big challenge with innovative solutions and expertise in distributed systems, Go, and full-stack development. Could this be the perfect match? Let\'s find out! 🚀'
     ],
     logo: '?'
   },
@@ -45,9 +43,6 @@ export const experiences: ExperienceItem[] = [
     position: 'Software Engineering Intern',
     duration: 'May 2025 - August 2025',
     description: [
-      'Implemented a GraphQL layer using gqlgen (Go) to handle 1000+ TPS in production with sub-10ms latency overhead',
-      'Migrated REST-based APIs with backward compatibility to ensure a zero-downtime transition',
-      'Developed serverless GraphQL resolvers in Go on AWS Lambda'
     ],
     logo: 'C1'
   },
@@ -56,9 +51,6 @@ export const experiences: ExperienceItem[] = [
     position: 'Software Engineering Intern',
     duration: 'May 2024 - August 2024',
     description: [
-      'Developed microservices using Java Spring Boot serving 50M+ daily requests with 99.9% uptime',
-      'Implemented Redis caching strategy reducing database load by 40% and API response times by 200ms',
-      'Reduced database query response time by 40% through indexing and query optimization'
     ],
     logo: 'RJ'
   },
@@ -67,9 +59,6 @@ export const experiences: ExperienceItem[] = [
     position: 'Software Engineering Intern',
     duration: 'May 2023 - August 2023',
     description: [
-      'Implemented OAuth 2.0 authentication and input validation protocols',
-      'Developed comprehensive monitoring and alerting system using Prometheus and Grafana',
-      'Collaborated with international teams across 3 time zones using Agile methodologies and code reviews'
     ],
     logo: 'DM'
   },
@@ -78,10 +67,6 @@ export const experiences: ExperienceItem[] = [
     position: 'Undergraduate Researcher',
     duration: 'June 2020 - June 2022',
     description: [
-      'Analyzed large datasets (10GB+) to extract insights for predictive modeling research',
-      'Developed Python scripts for data preprocessing, feature engineering, and statistical analysis',
-      'Published feature paper on deep learning for drug discovery using cascade transfer learning',
-      'Authored research on machine learning approach to automatic classification of sleep disorders'
     ],
     logo: 'FAU'
   },
@@ -90,9 +75,6 @@ export const experiences: ExperienceItem[] = [
     position: 'Teaching Assistant - Software Engineering',
     duration: 'August 2023 - Present',
     description: [
-      'Increased section exam score average by 15% through hosting comprehensive reviews and office hours',
-      'Created coding exercises focusing on practical applications for 150 students',
-      'Mentoring students in software engineering principles and best practices'
     ],
     logo: 'UF'
   }
@@ -121,7 +103,7 @@ export const projects: ProjectItem[] = [
     title: 'Drug Discovery ML Pipeline',
     description: 'Research project using cascade transfer learning for identifying high efficacy drug compounds. Published in Applied Sciences journal.',
     tech: ['Python', 'TensorFlow', 'Pandas', 'NumPy'],
-    link: 'https://doi.org/10.3390/app11177772'
+    link: 'https://doi.org/10.3390/app11077772'
   }
 ];
 
@@ -142,9 +124,9 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     company: 'Capital One',
     type: 'work',
     icon: Briefcase,
-    description: 'Implemented GraphQL layer and serverless resolvers using Go',
+    description: 'Building GraphQL systems and serverless solutions using Go',
     technologies: ['Go', 'GraphQL', 'AWS Lambda', 'gqlgen'],
-    achievements: ['1000+ TPS handled', 'Sub-10ms latency overhead', 'Zero-downtime migration'],
+    achievements: [],
     side: 'left'
   },
   {
@@ -156,7 +138,7 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     icon: Code,
     description: 'Developed high-performance microservices and caching systems',
     technologies: ['Java', 'Spring Boot', 'Redis'],
-    achievements: ['50M+ daily requests', '99.9% uptime', '40% query optimization', '200ms response time reduction'],
+    achievements: [],
     side: 'right'
   },
   {
@@ -168,7 +150,7 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     icon: Code,
     description: 'Implemented authentication systems and monitoring infrastructure',
     technologies: ['OAuth 2.0', 'Prometheus', 'Grafana'],
-    achievements: ['International team collaboration', 'Agile methodologies'],
+    achievements: [],
     side: 'left'
   },
   {
@@ -179,7 +161,7 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     type: 'education',
     icon: BookOpen,
     description: 'Teaching Assistant for Software Engineering course',
-    achievements: ['15% exam score improvement', '150+ students mentored'],
+    achievements: [],
     side: 'right'
   },
   {
@@ -190,7 +172,7 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     type: 'education',
     icon: GraduationCap,
     description: 'Benacquisto Scholar pursuing dual degree',
-    achievements: ['3.93 GPA', 'Dean\'s List'],
+    achievements: [],
     side: 'left'
   },
   {
@@ -202,7 +184,7 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
     icon: Microscope,
     description: 'Published research on ML for drug discovery and sleep disorder classification',
     technologies: ['Python', 'TensorFlow', 'Data Analysis'],
-    achievements: ['2 published papers', '10GB+ datasets analyzed'],
+    achievements: [],
     side: 'right'
   }
 ];
