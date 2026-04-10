@@ -7,20 +7,20 @@ interface ExperienceCardProps {
 
 export const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
   return (
-    <div className="bg-gray-900 border-2 border-yellow-600 rounded-lg p-4 sm:p-6 md:p-8 hover:border-yellow-500 transition-all duration-300 hover:transform hover:-translate-y-1 w-full">
-      <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-4">
-        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-800 rounded-lg flex items-center justify-center border border-yellow-600/30 mb-3 sm:mb-0">
-          <span className="text-yellow-500 font-bold text-lg sm:text-xl">{experience.logo}</span>
+    <div className="group border border-zinc-800/50 bg-zinc-900/20 rounded-lg p-6 hover:border-sky-500/30 hover:bg-zinc-900/50 transition-all duration-300 w-full">
+      <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div className="w-12 h-12 bg-zinc-900 rounded-md flex items-center justify-center border border-zinc-800 text-sky-400 font-mono text-sm group-hover:border-sky-500/30 transition-colors">
+          {experience.logo}
         </div>
         <div className="flex-1 w-full">
-          <h3 className="text-lg sm:text-xl font-bold text-yellow-500 mb-1">{experience.company}</h3>
-          <p className="text-gray-400 text-sm sm:text-base mb-2">{experience.position}</p>
-          <p className="text-gray-400 text-xs sm:text-sm mb-3">{experience.duration}</p>
-          <ul className="text-gray-300 space-y-1.5 sm:space-y-2 text-sm sm:text-base">
+          <h3 className="text-lg font-medium text-zinc-200 mb-1 group-hover:text-sky-400 transition-colors">{experience.company}</h3>
+          <p className="text-zinc-400 text-sm mb-1">{experience.position}</p>
+          <p className="text-zinc-500 text-xs font-mono mb-4">{experience.duration}</p>
+          <ul className="space-y-2 text-sm text-zinc-400">
             {experience.description.map((item, index) => (
               <li key={index} className="flex items-start">
-                <span className="mr-2 text-yellow-500 flex-shrink-0">•</span>
-                <span>{item}</span>
+                <span className="mr-3 text-sky-400 mt-1 flex-shrink-0">▹</span>
+                <span className="leading-relaxed">{item}</span>
               </li>
             ))}
           </ul>
@@ -28,4 +28,4 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) =>
       </div>
     </div>
   );
-}; 
+};

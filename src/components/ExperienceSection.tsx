@@ -15,12 +15,11 @@ export const ExperienceSection: React.FC = () => {
   const mobileOrderedExperiences = getMobileOrderedExperiences();
 
   return (
-    <section id="experience" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-black">
+    <section id="experience" className="py-20 px-6 bg-black">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16">
-          <span className="bg-gradient-to-r from-yellow-400 via-orange-500 via-red-500 via-pink-500 via-purple-500 via-blue-500 via-cyan-500 via-green-500 to-yellow-400 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">
-            Experience
-          </span>
+        <h2 className="text-3xl font-semibold text-zinc-200 mb-12 flex items-center gap-4">
+          <span className="text-sky-400 font-mono text-lg font-normal">01.</span> Experience
+          <div className="h-px bg-zinc-800 flex-grow max-w-xs"></div>
         </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">

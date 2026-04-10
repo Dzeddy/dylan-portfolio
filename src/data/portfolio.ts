@@ -3,11 +3,11 @@ import { ExperienceItem, ProjectItem, TimelineItem, SocialLink, EnhancedTimeline
 
 export const personalInfo = {
   name: 'Dylan Zhuang',
-  title: 'Incoming SWE Intern @ Capital One',
+  title: 'Previous SWE Intern @ Capital One',
   education: 'CS + Math @ University of Florida - Benacquisto Scholar',
-  role: 'TA @ UF CISE',
+  role: 'J*b: Coming Soon',
   email: 'dylanzhuang1025@gmail.com',
-  graduation: 'June 2026'
+  graduation: 'May 2026'
 };
 
 export const socialLinks: SocialLink[] = [
@@ -30,11 +30,10 @@ export const socialLinks: SocialLink[] = [
 
 export const experiences: ExperienceItem[] = [
   {
-    company: 'Your Company?',
-    position: 'Software Engineer',
+    company: 'TBD?',
+    position: '???',
     duration: 'Coming Soon',
     description: [
-      'Ready to tackle your next big challenge with innovative solutions and expertise in distributed systems, Go, and full-stack development. Could this be the perfect match? Let\'s find out! 🚀'
     ],
     logo: '?'
   },

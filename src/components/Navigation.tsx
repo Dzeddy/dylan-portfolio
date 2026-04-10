@@ -8,9 +8,7 @@ const navigationItems = ['Experience', 'Projects', 'Skills', 'Contact'];
 export const Navigation: React.FC = () => {
   const scrolled = useScrolled();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
   const handleNavClick = (item: string) => {
     setIsMenuOpen(false);
     const element = document.getElementById(item.toLowerCase());
@@ -18,45 +16,42 @@ export const Navigation: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 hidden sm:block ${
-      scrolled ? 'bg-black/90 backdrop-blur-md border-b border-yellow-600/20' : ''
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+      scrolled ? 'bg-black/80 backdrop-blur-md border-b border-zinc-900' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-lg sm:text-xl font-bold text-yellow-500">{personalInfo.name}</h3>
-          
-          {/* Desktop Menu */}
+          <h3 className="text-lg font-medium text-zinc-100 tracking-wide">{personalInfo.name}</h3>
+
           <div className="hidden md:flex space-x-8">
             {navigationItems.map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-300 hover:text-yellow-500 transition-colors duration-200"
+                className="text-sm text-zinc-400 hover:text-sky-400 transition-colors duration-200"
               >
                 {item}
               </a>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-gray-300 hover:text-yellow-500 transition-colors"
+            className="md:hidden text-zinc-400 hover:text-sky-400 transition-colors"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-yellow-600/20">
+          <div className="md:hidden mt-4 py-4 border-t border-zinc-900 bg-black">
             <div className="flex flex-col space-y-4">
               {navigationItems.map((item) => (
                 <button
                   key={item}
                   onClick={() => handleNavClick(item)}
-                  className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-left py-2"
+                  className="text-zinc-400 hover:text-sky-400 transition-colors duration-200 text-left text-sm py-2"
                 >
                   {item}
                 </button>
@@ -67,4 +62,4 @@ export const Navigation: React.FC = () => {
       </div>
     </nav>
   );
-}; 
+};

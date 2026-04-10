@@ -1,27 +1,24 @@
 import React from 'react';
 import { SocialLink } from '../types';
 
-interface SocialLinksProps {
-  links: SocialLink[];
-  className?: string;
-}
-
-export const SocialLinks: React.FC<SocialLinksProps> = ({ links, className = '' }) => {
+export const SocialLinks: React.FC<{ links: SocialLink[]; className?: string }> = ({ links, className = '' }) => {
   return (
-    <div className={`flex justify-center space-x-4 sm:space-x-6 ${className}`}>
+    <div className={`flex space-x-6 ${className}`}>
       {links.map((link, index) => {
         const IconComponent = link.icon;
         return (
           <a
             key={index}
             href={link.href}
-            className="text-gray-400 hover:text-yellow-500 transition-colors p-2"
+            target="_blank"
+            rel="noreferrer"
+            className="text-zinc-500 hover:text-sky-400 transition-colors"
             aria-label={link.label}
           >
-            <IconComponent size={20} className="sm:w-6 sm:h-6" />
+            <IconComponent size={22} />
           </a>
         );
       })}
     </div>
   );
-}; 
+};
