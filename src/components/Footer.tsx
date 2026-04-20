@@ -1,14 +1,14 @@
 import React from 'react';
-import { personalInfo } from '../data/portfolio';
+import { C, Mono } from './design';
 
-export const Footer: React.FC = () => {
-  return (
-    <footer className="py-6 border-t border-zinc-900">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <p className="text-zinc-600 font-mono text-xs">
-          Built with React & Tailwind by {personalInfo.name}
-        </p>
-      </div>
-    </footer>
-  );
-};
+export const Footer: React.FC = () => (
+  <footer
+    className="px-6 sm:px-10 md:px-14 py-8"
+    style={{ borderTop: `1px solid ${C.hair}` }}
+  >
+    <div className="flex flex-col md:flex-row items-start md:items-baseline justify-between gap-3">
+      <Mono>Set in Fraunces &amp; Instrument Sans. Built in Gainesville, 2026.</Mono>
+      <Mono>© Dylan Zhuang · No. 01 / 01</Mono>
+    </div>
+  </footer>
+);

@@ -1,25 +1,66 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolio';
+import { C, Reveal, SectionHeader } from './design';
 
-export const ContactSection: React.FC = () => {
-  return (
-    <section id="contact" className="py-32 px-6">
-      <div className="max-w-2xl mx-auto text-center">
-        <p className="text-sky-400 font-mono text-sm mb-4 tracking-wider">04. What's Next?</p>
-        <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-zinc-200">
-          Get In Touch
-        </h2>
-        <p className="text-zinc-400 mb-10 text-base leading-relaxed">
-          I'm currently looking for new opportunities, and my inbox is always open.
-          Whether you have a question or just want to say hi, I'll try my best to get back to you!
-        </p>
+export const ContactSection: React.FC = () => (
+  <section id="contact" className="px-6 sm:px-10 md:px-14 pt-12 pb-20 md:pb-32">
+    <SectionHeader
+      numeral="V."
+      title="Contact."
+      rightLines={[
+        'Open to first full-time roles,',
+        'Summer 2026 onward.',
+        'Happy to talk about anything shipped.',
+      ]}
+    />
+
+    <div className="grid grid-cols-12 gap-x-6 md:gap-x-10">
+      <Reveal className="col-span-12 md:col-span-10 md:col-start-2" delay={60}>
         <a
           href={`mailto:${personalInfo.email}`}
-          className="inline-block px-8 py-4 border border-sky-400 text-sky-400 font-mono text-sm rounded hover:bg-sky-400/10 transition-colors"
-        >
-          Say Hello
-        </a>
-      </div>
-    </section>
-  );
-};
+          style={{
+            display: 'inline-block',
+            fontFamily: "'Fraunces', serif",
+            fontStyle: 'italic',
+            fontSize: 'clamp(2rem, 7vw, 5.5rem)',
+            lineHeight: 1,
+            letterSpacing: '-0.02em',
+            color: C.ink,
+            fontVariationSettings: '"opsz" 144, "SOFT" 80, "wght" 360',
+            textDecoration: 'underline',
+            textUnderlineOffset: '0.12em',
+            textDecorationThickness: '1px',
+            wordBreak: 'break-word',
+            transition: 'color 180ms ease',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = C.rust; }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = C.ink; }}
+        >{personalInfo.email}</a>
+
+        <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4">
+          <a
+            href="https://github.com/Dzeddy"
+            target="_blank"
+            rel="noreferrer"
+            className="u-link"
+            style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 15, color: C.ink }}
+          >GitHub · Dzeddy</a>
+          <a
+            href="https://www.linkedin.com/in/dylan-zhuang/"
+            target="_blank"
+            rel="noreferrer"
+            className="u-link"
+            style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 15, color: C.ink }}
+          >LinkedIn · dylan-zhuang</a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="u-link"
+            style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 15, color: C.ink }}
+          >Résumé (PDF)</a>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+);

@@ -1,65 +1,85 @@
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { useScrolled } from '../hooks/useScrolled';
-import { personalInfo } from '../data/portfolio';
+import React, { useEffect, useState } from 'react';
+import { C, Mono } from './design';
 
-const navigationItems = ['Experience', 'Projects', 'Skills', 'Contact'];
+const NAV_ITEMS: [string, string, string][] = [
+  ['I.', 'top', 'Opening'],
+  ['II.', 'work', 'Work'],
+  ['III.', 'selected', 'Selected'],
+  ['IV.', 'apparatus', 'Skills'],
+  ['V.', 'contact', 'Contact'],
+];
 
 export const Navigation: React.FC = () => {
-  const scrolled = useScrolled();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const handleNavClick = (item: string) => {
-    setIsMenuOpen(false);
-    const element = document.getElementById(item.toLowerCase());
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const [y, setY] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const on = () => setY(window.scrollY);
+    on();
+    window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
+  }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-black/80 backdrop-blur-md border-b border-zinc-900' : 'bg-transparent'
-    }`}>
-      <div className="max-w-6xl mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <h3 className="text-lg font-medium text-zinc-100 tracking-wide">{personalInfo.name}</h3>
+    <header
+      className="w-full sticky top-0 z-40"
+      style={{
+        background: C.paper,
+        borderBottom: `1px solid ${y > 4 ? C.hair : 'transparent'}`,
+        transition: 'border-color 200ms',
+      }}
+    >
+      <div className="px-6 sm:px-10 md:px-14 py-5 flex items-center justify-between gap-6">
+        <Mono style={{ color: C.ink }}>Dylan&nbsp;Zhuang — Portfolio</Mono>
 
-          <div className="hidden md:flex space-x-8">
-            {navigationItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm text-zinc-400 hover:text-sky-400 transition-colors duration-200"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {NAV_ITEMS.map(([num, id, label]) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className="flex items-baseline gap-2"
+              style={{ textDecoration: 'none' }}
+            >
+              <Mono style={{ color: C.stone }}>{num}</Mono>
+              <Mono style={{ color: C.ink }}>{label}</Mono>
+            </a>
+          ))}
+        </nav>
 
-          <button
-            onClick={toggleMenu}
-            className="md:hidden text-zinc-400 hover:text-sky-400 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
+        <Mono style={{ color: C.ink }} className="hidden md:inline">Gainesville, FL</Mono>
 
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-zinc-900 bg-black">
-            <div className="flex flex-col space-y-4">
-              {navigationItems.map((item) => (
-                <button
-                  key={item}
-                  onClick={() => handleNavClick(item)}
-                  className="text-zinc-400 hover:text-sky-400 transition-colors duration-200 text-left text-sm py-2"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden"
+          aria-label="Toggle menu"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        >
+          <Mono style={{ color: C.ink }}>{menuOpen ? 'Close' : 'Menu'}</Mono>
+        </button>
       </div>
-    </nav>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div
+          className="md:hidden px-6 pb-6"
+          style={{ borderTop: `1px solid ${C.hair}` }}
+        >
+          {NAV_ITEMS.map(([num, id, label]) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              onClick={() => setMenuOpen(false)}
+              className="flex items-baseline gap-3 py-4"
+              style={{ textDecoration: 'none', borderBottom: `1px solid ${C.hairSoft}` }}
+            >
+              <Mono style={{ color: C.stone }}>{num}</Mono>
+              <Mono style={{ color: C.ink, fontSize: 13 }}>{label}</Mono>
+            </a>
+          ))}
+        </div>
+      )}
+    </header>
   );
 };

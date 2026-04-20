@@ -1,45 +1,27 @@
 import React from 'react';
 import { ExperienceCard } from './ExperienceCard';
-import { Timeline } from './Timeline';
-import { experiences, enhancedTimeline } from '../data/portfolio';
+import { experiences } from '../data/portfolio';
+import { Rule, SectionHeader } from './design';
 
-export const ExperienceSection: React.FC = () => {
-  // Create mobile-specific ordering: Capital One, Raymond James, UF, FAU
-  const getMobileOrderedExperiences = () => {
-    const orderedCompanies = ['Capital One', 'Raymond James Financial', 'University of Florida', 'Florida Atlantic University'];
-    return orderedCompanies
-      .map(company => experiences.find(exp => exp.company === company))
-      .filter((exp): exp is NonNullable<typeof exp> => exp !== undefined);
-  };
+export const ExperienceSection: React.FC = () => (
+  <section id="work" className="px-6 sm:px-10 md:px-14 pt-12 pb-28 md:pb-40">
+    <SectionHeader
+      numeral="II."
+      title="Work."
+      rightLines={[
+        'Five places.',
+        'Five years.'
+      ]}
+    />
 
-  const mobileOrderedExperiences = getMobileOrderedExperiences();
-
-  return (
-    <section id="experience" className="py-20 px-6 bg-black">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-semibold text-zinc-200 mb-12 flex items-center gap-4">
-          <span className="text-sky-400 font-mono text-lg font-normal">01.</span> Experience
-          <div className="h-px bg-zinc-800 flex-grow max-w-xs"></div>
-        </h2>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          {/* Mobile: Use strict ordering (Capital One, Raymond James, UF, FAU) */}
-          <div className="lg:hidden contents">
-            {mobileOrderedExperiences.map((experience, index) => (
-              <ExperienceCard key={`mobile-${index}`} experience={experience} />
-            ))}
-          </div>
-          
-          {/* Desktop: Use original ordering */}
-          <div className="hidden lg:contents">
-            {experiences.map((experience, index) => (
-              <ExperienceCard key={`desktop-${index}`} experience={experience} />
-            ))}
-          </div>
-        </div>
-
-        <Timeline items={enhancedTimeline} />
-      </div>
-    </section>
-  );
-}; 
+    <Rule />
+    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+      {experiences.map((exp, i) => (
+        <li key={i}>
+          <ExperienceCard experience={exp} index={i} />
+          <Rule soft={i !== experiences.length - 1} />
+        </li>
+      ))}
+    </ul>
+  </section>
+);

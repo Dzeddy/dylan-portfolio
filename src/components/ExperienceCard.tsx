@@ -1,31 +1,65 @@
 import React from 'react';
 import { ExperienceItem } from '../types';
+import { C, Reveal, Mono } from './design';
 
 interface ExperienceCardProps {
   experience: ExperienceItem;
+  index: number;
 }
 
-export const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
-  return (
-    <div className="group border border-zinc-800/50 bg-zinc-900/20 rounded-lg p-6 hover:border-sky-500/30 hover:bg-zinc-900/50 transition-all duration-300 w-full">
-      <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-        <div className="w-12 h-12 bg-zinc-900 rounded-md flex items-center justify-center border border-zinc-800 text-sky-400 font-mono text-sm group-hover:border-sky-500/30 transition-colors">
-          {experience.logo}
-        </div>
-        <div className="flex-1 w-full">
-          <h3 className="text-lg font-medium text-zinc-200 mb-1 group-hover:text-sky-400 transition-colors">{experience.company}</h3>
-          <p className="text-zinc-400 text-sm mb-1">{experience.position}</p>
-          <p className="text-zinc-500 text-xs font-mono mb-4">{experience.duration}</p>
-          <ul className="space-y-2 text-sm text-zinc-400">
-            {experience.description.map((item, index) => (
-              <li key={index} className="flex items-start">
-                <span className="mr-3 text-sky-400 mt-1 flex-shrink-0">▹</span>
-                <span className="leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
+export const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience, index }) => (
+  <Reveal delay={index * 40}>
+    <div className="grid grid-cols-12 gap-x-6 md:gap-x-10 py-8 md:py-10">
+
+      {/* Year + period */}
+      <div className="col-span-4 md:col-span-2">
+        <div
+          style={{
+            fontFamily: "'Fraunces', serif",
+            fontSize: 'clamp(1.75rem, 2.4vw, 2.25rem)',
+            lineHeight: 1,
+            color: C.ink,
+            fontVariationSettings: '"opsz" 48, "wght" 380',
+          }}
+        >{experience.displayYear || experience.duration.match(/\d{4}/)?.[0] || ''}</div>
+        <div className="mt-2">
+          <Mono>{experience.shortPeriod || ''}</Mono>
         </div>
       </div>
+
+      {/* Company + role */}
+      <div className="col-span-8 md:col-span-4">
+        <div
+          style={{
+            fontFamily: "'Fraunces', serif",
+            fontSize: 'clamp(1.25rem, 1.7vw, 1.5rem)',
+            lineHeight: 1.15,
+            color: C.ink,
+            fontVariationSettings: '"opsz" 48, "wght" 440',
+          }}
+        >{experience.company}</div>
+        <div
+          className="mt-1"
+          style={{
+            fontFamily: "'Instrument Sans', sans-serif",
+            fontSize: 14,
+            color: C.stone,
+          }}
+        >{experience.position}</div>
+      </div>
+
+      {/* Note */}
+      <div className="col-span-12 md:col-span-6 mt-2 md:mt-1">
+        <p
+          style={{
+            fontFamily: "'Instrument Sans', sans-serif",
+            fontSize: 16,
+            lineHeight: 1.55,
+            color: C.ink,
+            margin: 0,
+          }}
+        >{experience.note || ''}</p>
+      </div>
     </div>
-  );
-};
+  </Reveal>
+);

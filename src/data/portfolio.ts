@@ -5,7 +5,7 @@ export const personalInfo = {
   name: 'Dylan Zhuang',
   title: 'Previous SWE Intern @ Capital One',
   education: 'CS + Math @ University of Florida - Benacquisto Scholar',
-  role: 'J*b: Coming Soon',
+  role: 'Full-time: May 2026',
   email: 'dylanzhuang1025@gmail.com',
   graduation: 'May 2026'
 };
@@ -30,77 +30,87 @@ export const socialLinks: SocialLink[] = [
 
 export const experiences: ExperienceItem[] = [
   {
-    company: 'TBD?',
-    position: '???',
-    duration: 'Coming Soon',
-    description: [
-    ],
-    logo: '?'
-  },
-  {
     company: 'Capital One',
     position: 'Software Engineering Intern',
-    duration: 'May 2025 - August 2025',
-    description: [
-    ],
+    duration: 'May 2025 – August 2025',
+    displayYear: '2025',
+    shortPeriod: 'May – Aug',
+    note: "GraphQL and Go.",
+    description: [],
     logo: 'C1'
   },
   {
     company: 'Raymond James Financial',
     position: 'Software Engineering Intern',
-    duration: 'May 2024 - August 2024',
-    description: [
-    ],
+    duration: 'May 2024 – August 2024',
+    displayYear: '2024',
+    shortPeriod: 'May – Aug',
+    note: 'Redis and Java',
+    description: [],
     logo: 'RJ'
   },
   {
     company: 'DeepMotion',
     position: 'Software Engineering Intern',
-    duration: 'May 2023 - August 2023',
-    description: [
-    ],
+    duration: 'May 2023 – August 2023',
+    displayYear: '2023',
+    shortPeriod: 'May – Aug',
+    note: "OAuth and observability.",
+    description: [],
     logo: 'DM'
+  },
+  {
+    company: 'University of Florida',
+    position: 'Teaching Assistant',
+    duration: 'August 2023 – Present',
+    displayYear: '2023',
+    shortPeriod: '— Present',
+    note: "Advanced Programming Fundamentals, Discrete Math, and Computer Organization",
+    description: [],
+    logo: 'UF'
   },
   {
     company: 'Florida Atlantic University',
     position: 'Undergraduate Researcher',
-    duration: 'June 2020 - June 2022',
-    description: [
-    ],
+    duration: 'June 2020 – June 2022',
+    displayYear: '2020',
+    shortPeriod: '– 2022',
+    note: 'Cascade transfer learning for drug-target prediction. First paper, Applied Sciences, 2021.',
+    description: [],
     logo: 'FAU'
-  },
-  {
-    company: 'University of Florida',
-    position: 'Teaching Assistant - Software Engineering',
-    duration: 'August 2023 - Present',
-    description: [
-    ],
-    logo: 'UF'
   }
 ];
 
 export const projects: ProjectItem[] = [
   {
-    title: 'Zettelkasten – Connected Knowledge Platform',
-    description: 'Full-stack knowledge management platform that transforms notes into an interlinked knowledge graph.',
-    tech: ['Go', 'React', 'TypeScript', 'MongoDB', 'Redis', 'Pinecone', 'OpenAI Embeddings', 'WebSockets'],
+    title: 'Familiar',
+    year: 'ongoing',
+    kicker: 'Affective AI Therapy.',
+    description: 'For when you need to talk to someone but don\'t want to talk to someone.',
+    tech: ['Go', 'Vite', 'TypeScript', 'MongoDB', 'Redis', 'Pinecone', 'OpenAI Embeddings'],
+    link: 'familiar.cc'
+  },
+  {
+    title: 'Zettelkasten',
+    year: 'ongoing',
+    kicker: 'Lightning fast knowledge management with semantic search.',
+    description: 'Pinecone for semantic search, Redis for the parts that need to be fast.',
+    tech: ['Go', 'React', 'TypeScript', 'MongoDB', 'Redis', 'Pinecone', 'OpenAI Embeddings'],
     link: 'https://github.com/Dzeddy/zettelkasten'
   },
   {
-    title: 'Stats Dashboard - SwampHacks Project',
-    description: 'High-performance gaming statistics dashboard with microservice architecture, serving 200+ monthly users with 2ms average latency.',
+    title: 'Stats Dashboard',
+    year: '2024',
+    kicker: 'SwampHacks weekend project. Still in production.',
+    description: 'My first deployed full-stack project',
     tech: ['Go', 'MongoDB', 'Redis', 'React', 'NGINX'],
     link: 'https://dashboard.dzed.cx'
   },
   {
-    title: 'Distributed Caching System',
-    description: 'Built during Raymond James internship - Java and Redis-based caching system improving query response times by 40%.',
-    tech: ['Java', 'Redis', 'Spring Boot', 'Apache Kafka'],
-    link: '#'
-  },
-  {
-    title: 'Drug Discovery ML Pipeline',
-    description: 'Research project using cascade transfer learning for identifying high efficacy drug compounds. Published in Applied Sciences journal.',
+    title: 'Deep Learning for Drug Discovery',
+    year: '2022',
+    kicker: 'Cascade transfer learning for molecules that stick.',
+    description: "Published in Applied Sciences.",
     tech: ['Python', 'TensorFlow', 'Pandas', 'NumPy'],
     link: 'https://doi.org/10.3390/app11077772'
   }
@@ -189,10 +199,10 @@ export const enhancedTimeline: EnhancedTimelineItem[] = [
 ];
 
 export const skills = {
-  languages: ['Java', 'Python', 'Go', 'C++', 'C#', 'SQL', 'JavaScript'],
+  languages: ['Go', 'Java', 'Python', 'C++', 'C#', 'SQL', 'JavaScript', 'TypeScript'],
   technologies: ['AWS', 'Docker', 'Redis', 'MySQL', 'PostgreSQL', 'Amazon Aurora', 'Jenkins'],
   frameworks: ['Spring Boot', 'React', 'JUnit', 'Maven', 'Express'],
-  topics: ['Distributed Systems', 'Agile Development', 'Object-Oriented Design', 'Data Structures & Algorithms']
+  topics: ['Distributed systems', 'Object-oriented design', 'Algorithms & data structures', 'Agile in the non-cultish sense']
 };
 
 export const education = {
@@ -203,4 +213,4 @@ export const education = {
   gpa: '3.93/4.0',
   scholarship: 'Benacquisto Scholar',
   coursework: ['Advanced Algorithms', 'Distributed Systems', 'Cloud Computing', 'Database Systems', 'Machine Learning Applications']
-}; 
+};

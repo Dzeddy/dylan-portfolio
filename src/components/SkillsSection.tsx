@@ -1,35 +1,56 @@
 import React from 'react';
 import { skills } from '../data/portfolio';
+import { C, Reveal, Rule, SectionHeader } from './design';
 
-export const SkillsSection: React.FC = () => {
-  const categories = [
-    { title: 'Languages', items: skills.languages },
-    { title: 'Technologies', items: skills.technologies },
-    { title: 'Frameworks', items: skills.frameworks },
-    { title: 'Concepts', items: skills.topics }
-  ];
+const APPARATUS = [
+  { label: 'Languages',      items: skills.languages },
+  { label: 'Infrastructure', items: skills.technologies },
+  { label: 'Frameworks',     items: skills.frameworks },
+  { label: 'Thinking',       items: skills.topics },
+];
 
-  return (
-    <section id="skills" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-semibold text-zinc-200 mb-12 flex items-center gap-4">
-        <span className="text-sky-400 font-mono text-lg font-normal">03.</span> Technical Skills
-        <div className="h-px bg-zinc-800 flex-grow max-w-xs"></div>
-      </h2>
+export const SkillsSection: React.FC = () => (
+  <section id="apparatus" className="px-6 sm:px-10 md:px-14 pt-12 pb-28 md:pb-40">
+    <SectionHeader
+      numeral="IV."
+      title="Skills."
+      rightLines={[
+        'My toolbox.',
+      ]}
+    />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {categories.map((category, idx) => (
-          <div key={idx} className="bg-zinc-900/20 border border-zinc-800/50 rounded-lg p-6">
-            <h3 className="text-zinc-300 font-medium mb-4">{category.title}</h3>
-            <div className="flex flex-wrap gap-2">
-              {category.items.map((skill, i) => (
-                <span key={i} className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm rounded-full font-mono hover:border-sky-500/50 hover:text-sky-400 transition-colors">
-                  {skill}
-                </span>
-              ))}
-            </div>
+    <Rule />
+    <dl style={{ margin: 0 }}>
+      {APPARATUS.map(({ label, items }, i) => (
+        <Reveal key={label} delay={i * 40}>
+          <div className="grid grid-cols-12 gap-x-6 md:gap-x-10 py-8 md:py-10">
+            <dt className="col-span-12 md:col-span-3">
+              <span
+                style={{
+                  fontFamily: "'Fraunces', serif",
+                  fontStyle: 'italic',
+                  fontSize: 'clamp(1.5rem, 2vw, 2rem)',
+                  color: C.ink,
+                  fontVariationSettings: '"opsz" 48, "wght" 400',
+                }}
+              >{label}</span>
+            </dt>
+            <dd className="col-span-12 md:col-span-9 mt-2 md:mt-2" style={{ margin: 0 }}>
+              <p
+                style={{
+                  fontFamily: "'Instrument Sans', sans-serif",
+                  fontSize: 'clamp(1rem, 1.3vw, 1.125rem)',
+                  lineHeight: 1.55,
+                  color: C.ink,
+                  margin: 0,
+                  maxWidth: '52ch',
+                }}
+              >{items.join(', ')}</p>
+            </dd>
           </div>
-        ))}
-      </div>
-    </section>
-  );
-};
+          <Rule soft={i !== APPARATUS.length - 1} />
+        </Reveal>
+      ))}
+    </dl>
+  </section>
+);

@@ -2,6 +2,9 @@ export interface ExperienceItem {
   company: string;
   position: string;
   duration: string;
+  displayYear?: string;
+  shortPeriod?: string;
+  note?: string;
   description: string[];
   logo: string;
 }
@@ -9,6 +12,8 @@ export interface ExperienceItem {
 export interface ProjectItem {
   title: string;
   description: string;
+  kicker?: string;
+  year?: string;
   tech: string[];
   link: string;
   hideOnMobile?: boolean;
@@ -37,4 +42,4 @@ export interface SocialLink {
   href: string;
   icon: React.ComponentType<any>;
   label: string;
-} 
+}
