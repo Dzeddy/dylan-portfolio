@@ -101,7 +101,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => (
               textUnderlineOffset: '4px',
               textDecorationThickness: '1px',
             }}
-          >↗&nbsp;&nbsp;{getDisplayLink(project.link, project.title)}</div>
+          >→&nbsp;&nbsp;{getDisplayLink(project.link, project.title)}</div>
         </div>
       </div>
     </a>

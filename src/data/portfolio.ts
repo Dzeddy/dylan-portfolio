@@ -62,9 +62,9 @@ export const experiences: ExperienceItem[] = [
   {
     company: 'University of Florida',
     position: 'Teaching Assistant',
-    duration: 'August 2023 – Present',
+    duration: 'August 2023 – 2025',
     displayYear: '2023',
-    shortPeriod: '— Present',
+    shortPeriod: '– 2025',
     note: "Advanced Programming Fundamentals, Discrete Math, and Computer Organization",
     description: [],
     logo: 'UF'
