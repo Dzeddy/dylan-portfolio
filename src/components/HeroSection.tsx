@@ -57,7 +57,7 @@ export const HeroSection: React.FC = () => (
               color: C.stone,
             }}
           >
-            Graduating May 2026. 
+            Graduated May 2026. 
           </p>
         </Reveal>
       </div>
