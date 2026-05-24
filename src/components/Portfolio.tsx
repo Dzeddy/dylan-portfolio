@@ -10,36 +10,36 @@ import {
 } from './index';
 import { C, Reveal, Mono } from './design';
 
-const PullQuote: React.FC = () => (
-  <section className="px-6 sm:px-10 md:px-14 py-20 md:py-32">
-    <div className="grid grid-cols-12">
-      <Reveal className="col-span-12 md:col-span-10 md:col-start-2">
-        <blockquote
-          style={{
-            fontFamily: "'Fraunces', serif",
-            fontStyle: 'italic',
-            fontSize: 'clamp(2.25rem, 6vw, 5rem)',
-            lineHeight: 1.04,
-            letterSpacing: '-0.015em',
-            color: C.ink,
-            fontVariationSettings: '"opsz" 144, "SOFT" 60, "wght" 340',
-            margin: 0,
-            textIndent: '-0.4em',
-          }}
-        >
-          &ldquo;Most of what I&rsquo;m proud of is infrastructure.
-          It&rsquo;s either faster than what came before or
-          it&rsquo;s wrong, and either way nobody writes
-          a blog post about it.&rdquo;
-        </blockquote>
-        <div className="mt-6 md:mt-10 flex items-center gap-3">
-          <div style={{ width: 32, height: 1, background: C.ink }} />
-          <Mono style={{ color: C.ink }}>A working principle</Mono>
-        </div>
-      </Reveal>
-    </div>
-  </section>
-);
+// const PullQuote: React.FC = () => (
+//   <section className="px-6 sm:px-10 md:px-14 py-20 md:py-32">
+//     <div className="grid grid-cols-12">
+//       <Reveal className="col-span-12 md:col-span-10 md:col-start-2">
+//         <blockquote
+//           style={{
+//             fontFamily: "'Fraunces', serif",
+//             fontStyle: 'italic',
+//             fontSize: 'clamp(2.25rem, 6vw, 5rem)',
+//             lineHeight: 1.04,
+//             letterSpacing: '-0.015em',
+//             color: C.ink,
+//             fontVariationSettings: '"opsz" 144, "SOFT" 60, "wght" 340',
+//             margin: 0,
+//             textIndent: '-0.4em',
+//           }}
+//         >
+//           &ldquo;Most of what I&rsquo;m proud of is infrastructure.
+//           It&rsquo;s either faster than what came before or
+//           it&rsquo;s wrong, and either way nobody writes
+//           a blog post about it.&rdquo;
+//         </blockquote>
+//         <div className="mt-6 md:mt-10 flex items-center gap-3">
+//           <div style={{ width: 32, height: 1, background: C.ink }} />
+//           <Mono style={{ color: C.ink }}>A working principle</Mono>
+//         </div>
+//       </Reveal>
+//     </div>
+//   </section>
+// );
 
 export const Portfolio: React.FC = () => {
   return (
@@ -62,7 +62,7 @@ export const Portfolio: React.FC = () => {
       <Navigation />
       <HeroSection />
       <ExperienceSection />
-      <PullQuote />
+      {/* <PullQuote /> */}
       <ProjectsSection />
       <SkillsSection />
       <ContactSection />

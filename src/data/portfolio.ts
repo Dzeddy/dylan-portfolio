@@ -3,7 +3,7 @@ import { ExperienceItem, ProjectItem, TimelineItem, SocialLink, EnhancedTimeline
 
 export const personalInfo = {
   name: 'Dylan Zhuang',
-  title: 'Previous SWE Intern @ Capital One',
+  title: 'Software Engineer @ Google',
   education: 'CS + Math @ University of Florida - Benacquisto Scholar',
   role: 'Full-time: May 2026',
   email: 'dylanzhuang1025@gmail.com',
@@ -29,6 +29,16 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const experiences: ExperienceItem[] = [
+  {
+    company: 'Google',
+    position: 'Incoming Software Engineer',
+    duration: 'June 2026 – Present',
+    displayYear: '2026',
+    shortPeriod: 'June – Present',
+    note: "Distributed Systems and C++",
+    description: [],
+    logo: 'C1'
+  },
   {
     company: 'Capital One',
     position: 'Software Engineering Intern',

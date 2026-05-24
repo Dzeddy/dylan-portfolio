@@ -9,8 +9,6 @@ export const ExperienceSection: React.FC = () => (
       numeral="II."
       title="Work."
       rightLines={[
-        'Five places.',
-        'Five years.'
       ]}
     />
 

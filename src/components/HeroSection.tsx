@@ -47,7 +47,7 @@ export const HeroSection: React.FC = () => (
               color: C.ink,
             }}
           >
-            CS&nbsp;+&nbsp;math at the University of Florida, Benacquisto Scholar. Previous SWE Intern @ Capital One. Olivia Rodrigo Superfan.
+            SWE @ Google. Olivia Rodrigo Superfan. CS&nbsp;+&nbsp;Math.
           </p>
           <p
             className="mt-5 text-[15px] md:text-[16px]"

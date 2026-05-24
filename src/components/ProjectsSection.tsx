@@ -17,10 +17,10 @@ export const ProjectsSection: React.FC = () => {
     <section id="selected" className="px-6 sm:px-10 md:px-14 pt-12 pb-28 md:pb-40">
       <SectionHeader
         numeral="III."
-        title="Selected."
+        title="Projects."
         rightLines={[
-          'Always building,',
-          "Always learning.",
+          // 'Always building,',
+          // "Always learning.",
         ]}
       />
 

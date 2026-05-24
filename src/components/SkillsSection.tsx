@@ -15,7 +15,7 @@ export const SkillsSection: React.FC = () => (
       numeral="IV."
       title="Skills."
       rightLines={[
-        'My toolbox.',
+        // 'My toolbox.',
       ]}
     />
 
