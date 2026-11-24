@@ -1,72 +1,161 @@
-import React from 'react';
-import {
-  Navigation,
-  HeroSection,
-  ExperienceSection,
-  ProjectsSection,
-  SkillsSection,
-  ContactSection,
-  Footer
-} from './index';
-import { C, Reveal, Mono } from './design';
-
-// const PullQuote: React.FC = () => (
-//   <section className="px-6 sm:px-10 md:px-14 py-20 md:py-32">
-//     <div className="grid grid-cols-12">
-//       <Reveal className="col-span-12 md:col-span-10 md:col-start-2">
-//         <blockquote
-//           style={{
-//             fontFamily: "'Fraunces', serif",
-//             fontStyle: 'italic',
-//             fontSize: 'clamp(2.25rem, 6vw, 5rem)',
-//             lineHeight: 1.04,
-//             letterSpacing: '-0.015em',
-//             color: C.ink,
-//             fontVariationSettings: '"opsz" 144, "SOFT" 60, "wght" 340',
-//             margin: 0,
-//             textIndent: '-0.4em',
-//           }}
-//         >
-//           &ldquo;Most of what I&rsquo;m proud of is infrastructure.
-//           It&rsquo;s either faster than what came before or
-//           it&rsquo;s wrong, and either way nobody writes
-//           a blog post about it.&rdquo;
-//         </blockquote>
-//         <div className="mt-6 md:mt-10 flex items-center gap-3">
-//           <div style={{ width: 32, height: 1, background: C.ink }} />
-//           <Mono style={{ color: C.ink }}>A working principle</Mono>
-//         </div>
-//       </Reveal>
-//     </div>
-//   </section>
-// );
+import React, { useCallback, useEffect, useState } from 'react';
+import { personalInfo, sectionNav } from '../data/portfolio';
+import { CanvasMode, ThemeMode } from '../types';
+import { Navigation } from './Navigation';
+import { HeroSection } from './HeroSection';
+import { StatementBand } from './StatementBand';
+import { ExperienceSection } from './ExperienceSection';
+import { ProjectsSection } from './ProjectsSection';
+import { SkillsSection } from './SkillsSection';
+import { ContactSection } from './ContactSection';
+import { Footer } from './Footer';
+import { FloatingDock } from './FloatingDock';
+import { CommandPalette } from './CommandPalette';
 
 export const Portfolio: React.FC = () => {
+  const [theme, setTheme] = useState<ThemeMode>(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.getAttribute('data-theme') === 'dark'
+        ? 'dark'
+        : 'light';
+    }
+    return 'light';
+  });
+  const [canvasMode, setCanvasMode] = useState<CanvasMode>('field');
+  const [activeSection, setActiveSection] = useState<string>('intro');
+  const [commandOpen, setCommandOpen] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  // Sync theme attribute & localStorage
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('dz-theme', theme);
+    } catch {
+      // ignore storage errors
+    }
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
+
+  const toggleCanvasMode = useCallback(() => {
+    setCanvasMode((prev) => (prev === 'field' ? 'orbit' : 'field'));
+  }, []);
+
+  const handleCopyEmail = useCallback(() => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(personalInfo.email).catch(() => {});
+    }
+    setCopiedEmail(true);
+    window.setTimeout(() => setCopiedEmail(false), 2000);
+  }, []);
+
+  const handleJumpSection = useCallback((id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
+
+  // Scroll-spy for floating dock & navigation
+  useEffect(() => {
+    const ids = sectionNav.map((s) => s.id);
+    const updateActive = () => {
+      const marker = window.scrollY + window.innerHeight * 0.34;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= marker) {
+          current = id;
+        }
+      }
+      // If near the very bottom, activate contact
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 60
+      ) {
+        current = 'contact';
+      }
+      setActiveSection(current);
+    };
+
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', updateActive);
+      window.removeEventListener('resize', updateActive);
+    };
+  }, []);
+
+  // Global keyboard shortcuts (Cmd/Ctrl+K for command palette)
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setCommandOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
   return (
-    <div
-      style={{
-        background: C.paper,
-        color: C.ink,
-        minHeight: '100vh',
-        fontFamily: "'Instrument Sans', system-ui, sans-serif",
-      }}
-    >
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap');
-        *, *::before, *::after { border-radius: 0 !important; box-shadow: none !important; }
-        ::selection { background: ${C.ink}; color: ${C.paper}; }
-        .u-link { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: color 180ms ease; }
-        .u-link:hover { color: ${C.rust}; }
-        a { color: inherit; }
-      `}</style>
-      <Navigation />
-      <HeroSection />
-      <ExperienceSection />
-      {/* <PullQuote /> */}
-      <ProjectsSection />
-      <SkillsSection />
-      <ContactSection />
-      <Footer />
+    <div className="min-h-screen relative">
+      <Navigation
+        activeSection={activeSection}
+        theme={theme}
+        canvasMode={canvasMode}
+        copiedEmail={copiedEmail}
+        onToggleTheme={toggleTheme}
+        onToggleCanvasMode={toggleCanvasMode}
+        onCopyEmail={handleCopyEmail}
+        onJumpSection={handleJumpSection}
+        onOpenCommand={() => setCommandOpen(true)}
+      />
+
+      <main>
+        <HeroSection
+          theme={theme}
+          canvasMode={canvasMode}
+          onCanvasModeChange={setCanvasMode}
+          copiedEmail={copiedEmail}
+          onCopyEmail={handleCopyEmail}
+        />
+
+        <StatementBand />
+        <ExperienceSection />
+        <ProjectsSection />
+        <SkillsSection />
+
+        <ContactSection
+          theme={theme}
+          copiedEmail={copiedEmail}
+          onCopyEmail={handleCopyEmail}
+        />
+      </main>
+
+      <Footer onOpenCommand={() => setCommandOpen(true)} />
+
+      <FloatingDock
+        activeSection={activeSection}
+        onSelectSection={handleJumpSection}
+        onOpenCommand={() => setCommandOpen(true)}
+      />
+
+      <CommandPalette
+        open={commandOpen}
+        onClose={() => setCommandOpen(false)}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        canvasMode={canvasMode}
+        onToggleCanvasMode={toggleCanvasMode}
+        onJumpSection={handleJumpSection}
+        copiedEmail={copiedEmail}
+        onCopyEmail={handleCopyEmail}
+      />
     </div>
   );
 };
