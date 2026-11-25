@@ -1,44 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { experiences } from '../data/portfolio';
-import { Reveal, SectionHeader } from './design';
+import { Reveal } from './design';
 import { ExperienceCard } from './ExperienceCard';
 
-export const ExperienceSection: React.FC = () => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+export const ExperienceSection: React.FC = () => (
+  <section
+    id="experience"
+    className="scroll-mt-20 max-w-[1200px] mx-auto px-5 sm:px-9 py-16 sm:py-20"
+    style={{ borderTop: '1px solid #ECEEF0' }}
+  >
+    <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 lg:gap-12 items-start">
+      <Reveal>
+        <h2
+          className="m-0 text-[28px] sm:text-[32px] font-medium tracking-[-0.035em]"
+          style={{ color: '#0F0F10', lineHeight: 1.1 }}
+        >
+          Experience
+        </h2>
+        <p
+          className="mt-2.5 mb-0 text-[15px] tabular"
+          style={{ color: '#646973' }}
+        >
+          2020 — 2026
+        </p>
+      </Reveal>
 
-  return (
-    <section id="work" className="scroll-mt-20 py-10 sm:py-16 px-4 sm:px-8">
-      <div className="max-w-[1180px] mx-auto">
-        <SectionHeader
-          title="Work"
-          subtitle="Production infrastructure, backend systems, teaching, and ML research."
-          meta="2020 — 2026 · Tap a row to expand"
-        />
-
-        <Reveal delay={60}>
-          <div className="gallery-sheet overflow-hidden">
-            <ul className="list-none m-0 p-0">
-              {experiences.map((exp, i) => (
-                <li
-                  key={`${exp.company}-${exp.displayYear}`}
-                  style={{
-                    borderTop: i === 0 ? 'none' : '1px solid var(--hair)',
-                  }}
-                >
-                  <ExperienceCard
-                    experience={exp}
-                    isCurrent={i === 0}
-                    expanded={expandedIndex === i}
-                    onToggle={() =>
-                      setExpandedIndex((prev) => (prev === i ? null : i))
-                    }
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
+      <div>
+        {experiences.map((exp, idx) => (
+          <Reveal key={exp.id} delay={idx * 30}>
+            <ExperienceCard experience={exp} isFirst={idx === 0} />
+          </Reveal>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);

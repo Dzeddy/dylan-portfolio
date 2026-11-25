@@ -1,43 +1,58 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
 
-interface FooterProps {
-  onOpenCommand: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenCommand }) => (
-  <footer className="px-4 sm:px-8 pt-6 pb-12 md:pb-28">
-    <div
-      className="max-w-[1180px] mx-auto pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[12.5px]"
-      style={{
-        borderTop: '1px solid var(--hair)',
-        color: 'var(--ink-muted)',
-      }}
-    >
-      <div>
-        © 2026 {personalInfo.name} · {personalInfo.location}
+export const Footer: React.FC = () => (
+  <footer
+    id="contact"
+    className="scroll-mt-20 max-w-[1200px] mx-auto px-5 sm:px-9 pt-14 pb-16"
+    style={{ borderTop: '1px solid #ECEEF0' }}
+  >
+    <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6 lg:gap-12 items-baseline">
+      <div
+        className="text-[14px]"
+        style={{ color: '#7C818B' }}
+      >
+        © 2026 {personalInfo.name} · {personalInfo.locationFull}
       </div>
-      <div className="flex items-center gap-4">
-        <button
-          type="button"
-          onClick={onOpenCommand}
-          className="hidden md:inline font-mono-meta text-[12px] transition-colors duration-150"
-          style={{
-            background: 'none',
-            border: 'none',
-            padding: 0,
-            color: 'var(--ink-muted)',
-            cursor: 'pointer',
-          }}
-        >
-          Press ⌘K for quick jump
-        </button>
+
+      <div className="flex flex-wrap items-center gap-x-7 gap-y-3 text-[15px] font-medium">
         <a
-          href="#intro"
-          className="md:hidden font-mono-meta text-[12px]"
-          style={{ color: 'var(--ink-muted)', textDecoration: 'none' }}
+          href={`mailto:${personalInfo.email}`}
+          className="hover:underline"
+          style={{ color: '#0F0F10', textDecoration: 'none' }}
         >
-          Back to top ↑
+          {personalInfo.email}
+        </a>
+        <a
+          href={personalInfo.githubUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-0.5 hover:underline"
+          style={{ color: '#52565E', textDecoration: 'none' }}
+        >
+          <span>GitHub</span>
+          <ArrowUpRight size={14} />
+        </a>
+        <a
+          href={personalInfo.linkedinUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-0.5 hover:underline"
+          style={{ color: '#52565E', textDecoration: 'none' }}
+        >
+          <span>LinkedIn</span>
+          <ArrowUpRight size={14} />
+        </a>
+        <a
+          href={personalInfo.resumePath}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-0.5 hover:underline"
+          style={{ color: '#52565E', textDecoration: 'none' }}
+        >
+          <span>Résumé</span>
+          <ArrowUpRight size={14} />
         </a>
       </div>
     </div>

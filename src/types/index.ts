@@ -1,13 +1,9 @@
-import { LucideIcon } from 'lucide-react';
-
 export interface ExperienceItem {
+  id: string;
   company: string;
   position: string;
-  duration: string;
-  displayYear: string;
-  shortPeriod: string;
-  note: string;
-  highlights: string[];
+  period: string;
+  summary: string;
   link?: string;
 }
 
@@ -15,25 +11,14 @@ export interface ProjectItem {
   id: string;
   title: string;
   year: string;
-  kicker: string;
   description: string;
   tech: string[];
   link: string;
-  displayLink: string;
-  schematic: 'waveform' | 'graph' | 'telemetry' | 'lattice';
+  image?: string;
+  featured?: boolean;
 }
 
-export interface SocialLink {
-  href: string;
-  icon: LucideIcon;
+export interface ToolkitRow {
   label: string;
-  handle: string;
+  value: string;
 }
-
-export interface SkillGroup {
-  label: string;
-  items: string[];
-}
-
-export type CanvasMode = 'field' | 'orbit';
-export type ThemeMode = 'light' | 'dark';
